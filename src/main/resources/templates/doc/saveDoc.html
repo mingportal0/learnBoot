@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  layout:decorator="layout/modalLayout">
+<head>
+    <title>Board</title>
+</head>
+<body>
+	<div class="defaultModal" layout:fragment="content">
+	    <script src="/js/doc/saveDoc.js" defer></script>
+		<div class="defaultModal_content">
+			<a class="modal_close_btn" href="javascript:saveUser();">닫기</a>
+			<div class="save_page_header">
+				<a class="" href="javascript:saveUser();">저장</a>
+			</div>
+			<div class="save_page_row">
+				<input type="text" name="title" placeholder="제목을 입력하세요." maxlength="200"/>
+			</div>
+			<div class="save_page_row">
+				<textarea name="title" placeholder="내용을 입력하세요." maxlength="2000"></textarea>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

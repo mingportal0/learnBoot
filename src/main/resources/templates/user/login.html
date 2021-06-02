@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Login Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- 컨텐츠 페이지 CSS 삽입 -->
+<link rel="stylesheet" href="/static/css/mstyle.css">
+<link rel="stylesheet" href="/static/css/fontawesome/css/all.min.css">
+</head>
+<body>
+<form action="/loginAction" method="POST">
+<div class="wrap">
+	<div class="login_page">
+		<div class="select_lang">
+    		<select>
+	    		<option>한국어</option>
+	    		<option>English</option>
+	    	</select>
+    	</div>
+		<div class="header">
+			<h1 class="header_logo">
+				<a class="logo_style1" href="/index"><span class="blind"></span></a>
+			</h1>
+		</div>
+		<div class="login_form">
+			<div class="login_error" th:if="${param.error}" th:text="${errorMessage}"></div>
+			<div class="login_input">
+				<input type="text" id="email" name="email" placeholder="e-mail"/>
+				<input type="password" id="pw" name="pw" placeholder="password"/>
+			</div>
+			<div class="login_submit">
+				<input type="submit" value="sign-in"/>
+			</div>
+			<div class="login_register">
+				<span><a href="/user/saveUser">회원가입</a></span>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+</body>
+</html>

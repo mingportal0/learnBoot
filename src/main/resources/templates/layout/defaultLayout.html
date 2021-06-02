@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title layout:title-pattern="$LAYOUT_TITLE : $CONTENT_TITLE">Demo</title>
+	<!-- common Script -->
+	<th:block th:replace="fragments/config"></th:block>
+</head>
+<body>
+	<div class="wrap">
+		<!-- common header -->
+		<th:block th:replace="fragments/header :: commonHeader"></th:block>
+		<div class="container flex">
+			<!-- common left Menu -->
+			<th:block th:replace="fragments/leftMenu :: commonLeftMenu"></th:block>
+			<!-- page content body -->
+			<th:block layout:fragment="content"></th:block>
+		</div>
+		<!-- common footer -->
+		<footer th:replace="fragments/footer :: commonFooter"></footer>
+	</div>
+</body>
+</html>

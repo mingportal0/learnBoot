@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  layout:decorator="layout/mainLayout">
+<head>
+    <title>Home</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<h3>Hello, html!</h3>
+		<span th:text="${loginUser}"></span>
+		<div><a href="/logoutAction">로그아웃</a></div>
+	</div>
+</body>
+</html>

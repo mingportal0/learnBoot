@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="header" th:fragment="commonHeader">
+	<script src="/static/js/fragments/header.js"></script>
+	<div class="special_bg">
+		<div class="container_logo">
+			<!-- Logo -->
+			<h1 class="header_logo">
+				<a class="logo_style1" href="/index"><span class="blind"></span></a>
+			</h1>
+			<form class="header_search">
+				<input name="searchVal"/>
+				<button type="submit"><i class="fas fa-search"></i></button>
+			</form>
+		</div>
+		<!-- Nav -->
+		<div class="gnb">
+			<ul class="groupNav">
+				<li class="groupNav_item"><a href="/index">Home</a></li>
+				<li class="groupNav_item"><a href="/doc/listDoc">Board</a></li>
+			</ul>
+			<!-- Login -->
+			<div class="user_bar">
+				<div class="login_user_info">
+					<th:block th:if="${loginUserName != null}">
+							<span class="login_user_name" th:text="|${loginUserName}님|"></span>
+						    <a class="logout" href="javascript:logout(); ">Sign out</a>
+					</th:block>
+					<th:block th:unless="${loginUserName != null}">
+						<a class="login" href="/login">Sign in</a>
+					</th:block> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</html>

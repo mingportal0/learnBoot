@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  layout:decorator="layout/defaultLayout">
+<head>
+    <title>Board</title>
+</head>
+<body>
+	<div class="content" layout:fragment="content">
+		<script src="/js/doc/listDoc.js" defer></script>
+		<div class="grid_area h550">
+			<table class="grid">
+				<thead>
+				    <tr>
+				        <th class="text_center">No</th>
+				        <th class="text_center">제목</th>
+				        <th class="text_center">작성자</th>
+				        <th class="text_center">작성일</th>
+				        <th class="text_center">수정자</th>
+				        <th class="text_center">수정일</th>
+				    </tr>
+				</thead>
+				<tbody>
+				    <tr th:each="doc: ${list}">
+				        <td class="text_center" th:text="${doc.id}"></td>
+				        <td class="text_center"  th:text="${doc.title}"></td>
+				        <td class="text_center"  th:text="${doc.creator}"></td>
+				        <td class="text_center"  th:text="${doc.createStamp}"></td>
+				        <td class="text_center"  th:text="${doc.modifier}"></td>
+				        <td class="text_center"  th:text="${doc.modifyStamp}"></td>
+				    </tr>
+				</tbody>
+			</table>
+		</div>
+		<nav class="grid_nav">
+		    <ul class="pagination">
+		        <li class="disabled">
+		            <a href="#" aria-label="First">
+		                <span aria-hidden="true">First</span>
+		            </a>
+		        </li>
+		        <li class="disabled">
+		            <a href="#" aria-label="Previous">
+		                <span aria-hidden="true">&lt;</span>
+		            </a>
+		        </li>
+		        <li class="active"><a href="#">1</a></li>
+		        <li><a href="#">2</a></li>
+		        <li><a href="#">3</a></li>
+		        <li><a href="#">4</a></li>
+		        <li><a href="#">5</a></li>
+		        <li>
+		            <a href="#" aria-label="Next">
+		                <span aria-hidden="true">&gt;</span>
+		            </a>
+		        </li>
+		        <li>
+		            <a href="#" aria-label="Last">
+		                <span aria-hidden="true">Last</span>
+		            </a>
+		        </li>
+		    </ul>
+		</nav>
+	</div>
+</body>
+</html>

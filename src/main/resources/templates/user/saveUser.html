@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Save Doc</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- 컨텐츠 페이지 CSS 삽입 -->
+<link rel="stylesheet" href="/static/css/mstyle.css">
+<link rel="stylesheet" href="/static/css/fontawesome/css/all.min.css">
+<script src="/static/js/user/saveUser.js"></script>
+</head>
+<body>
+<form id="saveUserForm" action="#" th:action="@{/user/saveUserAction}" th:object="${user}" method="post">
+<div class="wrap">
+	<div class="save_user_page">
+		<div class="header">
+			<h1 class="header_logo">
+				<a class="logo_style1" href="/index"><span class="blind"></span></a>
+			</h1>
+		</div>
+		<div class="group_row">
+			<div class="row">
+				<label for="email">이메일</label>
+			</div>
+			<div class="row">
+				<input type="text" name="email" th:field="*{email}" placeholder="test@naver.com" maxlength="20"/>
+			</div>
+		</div>
+		<div class="group_row">
+			<div class="row">
+				<label for="pw">비밀번호</label>
+			</div>
+			<div class="row">
+				<input type="password" name="pw" th:field="*{pw}" maxlength="20"/>
+			</div>
+		</div>
+		<div class="group_row">
+			<div class="row">
+				<label for="pwCheck">비밀번호 확인</label>
+			</div>
+			<div class="row">
+				<input type="password" name="pwCheck" maxlength="20"/>
+			</div>
+		</div>
+		<div class="group_row">
+			<div class="row">
+				<label for="name">이름</label>
+			</div>
+			<div class="row">
+				<input type="text" name="name" th:field="*{name}" maxlength="20"/>
+			</div>
+		</div>
+		<div class="group_row">
+			<div class="row">
+				<label for="phone">휴대전화</label>
+			</div>
+			<div class="row">
+				<input type="text" name="phone" th:field="*{phone}" placeholder="010-0000-0000" maxlength="20"/>
+			</div>
+		</div>
+		<div class="save_user_row">
+			<a class="save_user_btn" href="javascript:saveUser();">회원가입</a>
+		</div>
+	</div>
+</div>
+</form>
+</body>
+</html>

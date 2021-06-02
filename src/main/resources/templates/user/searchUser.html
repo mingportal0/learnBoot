@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SearchUser Page</title>
+<script src="/js/user/user.js" defer></script>
+</head>
+<body>
+	<table id="userTable">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Email</th>
+				<th>Name</th>
+				<th>CreateStamp</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user : ${userList}">
+				<td th:text="${userStat.count}"></td>    
+				<td th:text="${user.email}"></td>    
+				<td th:text="${user.name}"></td>
+				<td th:text="${user.createStamp}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

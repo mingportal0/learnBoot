@@ -1,0 +1,558 @@
+@charset "UTF-8";
+/* 
+	Reset CSS
+	http://meyerweb.com/eric/tools/css/reset/ 
+	v2.0 | 20110126
+	License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+	common
+*/
+div {
+	display: block;
+}
+body, button, input, select, table, textarea {
+	font-size: 12px;
+    line-height: 16px;
+    color: #202020;
+    font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+button{
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: #62a039;
+	color: #fff;
+	border-width: 0;
+	padding: 0 10px;
+}
+.h500{
+	height: 500px;
+}
+
+.h550{
+	height: 550px;
+}
+
+.text_left{
+	text-align: left !important;
+}
+
+.text_left{
+	text-align: right !important;
+}
+
+.text_center{
+	text-align: center !important;
+}
+
+/*
+	wrap
+*/
+.wrap{
+	position: relative;
+	overflow: hidden;
+    min-width: 1190px;
+    width: 1130px;
+	margin: 0 auto;
+}
+
+/*
+	header
+*/
+.header{
+	margin-bottom: 20px;
+}
+.header .header_logo{
+	display: inline;
+}
+.container_logo{
+    height: 100%;
+    padding: 40px 150px;
+    border-bottom: 1px solid #e4e8eb;
+}
+.logo_style1{
+	cursor: pointer;
+}
+.logo_style1 .blind{
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+.logo_style1 .blind::before{
+	content: "";
+	display: inline-block;
+	background-image: url("./img/springboot.png");
+	background-size: 200px 50px;
+	width: 200px;
+	height: 50px;
+	vertical-align: top;
+}
+.container_logo .header_search{
+	display: inline;
+	margin: 0 20px;
+	font-size: 18px;
+}
+.container_logo .header_search input{
+	width: 450px;
+	height: 24px;
+    padding: 13px 15px;
+    margin: 1px;
+    font-size: inherit;
+    font-weight: 700;
+}
+.container_logo .header_search button{
+	width: 56px;
+	height: 56px;
+	font-size: inherit;
+}
+/*
+	groupNav
+*/
+.gnb{
+	position: relative;
+	height: 50px;
+	border-bottom: 1px solid #e4e8eb;
+	padding: 0 30px;
+}
+.groupNav{
+	padding: 10px 0;
+}
+.groupNav_item{
+	display: inline-block;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 30px;
+	padding: 0 10px;
+}
+.groupNav_item a{
+	text-decoration: none;
+	color: #62a039;
+}
+.groupNav_item a:hover{
+	color: #3f6624;
+}
+/*
+	user_bar
+*/
+.user_bar{
+	position: absolute;
+    top: 0;
+    right: 30px;
+    bottom: 0;
+    padding: 10px 0;
+}
+.user_bar .login_user_info{
+	line-height: 30px;
+}
+.user_bar .login_user_name{
+	margin: 0 20px;
+	font-weight: 700;
+}
+.user_bar .logout{
+	background-color: #62a039;
+	padding: 5px 10px;
+	border-radius: 5px;
+	color: #fff;
+	width: 200px;
+	height: 30px;
+	font-weight: 700;
+	text-decoration: none;
+}
+.user_bar .logout:hover{
+	background-color: #3f6624;
+	color: #fff;
+}
+.user_bar .login{
+	background-color: #62a039;
+	padding: 5px 70px;
+	border-radius: 5px;
+	color: #fff;
+	width: 200px;
+	height: 30px;
+	font-weight: 700;
+	text-decoration: none;
+}
+.user_bar .login:hover{
+	background-color: #3f6624;
+	color: #fff;
+}
+
+/*
+	container
+*/
+.container{
+	height: 600px;
+	width: 100%;
+}
+.flex{
+	display: flex;
+}
+
+/*
+	footer
+*/
+.footer{
+	position: relative;
+	border-top: 1px solid #e4e8eb;
+	margin-top: 20px;
+	padding: 11px 0;
+	height: 50px;
+}
+/*
+	select lang
+*/
+.select_lang{
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 11px 0;
+}
+.select_lang select{
+	position: relative;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    width: 100%;
+    min-width: 95px;
+    height: 30px;
+    padding: 4px 10px 6px 8px;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    appearance: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+.select_lang option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+.select_lang::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-color: #ccc transparent transparent transparent;
+    position: absolute;
+    top: 22px;
+    right: 10px;
+    cursor: pointer;
+    z-index: -1;
+}
+.select_lang select:focus {
+    outline: 0;    
+}
+/*
+	login
+*/
+.login_page{
+    height: 100%;
+    padding: 100px 150px;
+}
+.login_page .blind{
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+.login_page .blind::before{
+	content: "";
+	display: inline-block;
+	background-image: url("./img/springboot.png");
+	background-size: 200px 50px;
+	width: 200px;
+	height: 50px;
+	vertical-align: top;
+	margin: 10px 0;
+	text-align: center;
+}
+.login_page .header_logo{
+	margin: 0 340px;
+}
+.login_page .logo_style1{
+	cursor: pointer;
+}
+.login_form input{
+	display: block;
+	margin: 10px auto;
+}	
+.login_input input{
+	width: 300px;
+	height: 30px;
+	padding: 6px 7px;
+}
+.login_submit{
+	width: 350px;
+	margin: 0 270px;
+	border-bottom: 1px solid #e4e8eb;
+}
+.login_submit input{
+	width: 320px;
+	height: 40px;
+	font-size: 15px;
+	background-color: #62a039;
+	border-radius: 5px;
+	border: 0 none;
+	color: #fff;
+	cursor: pointer;
+}
+.login_submit input:hover{
+	background-color: #3f6624;
+	color: #fff;
+}
+.login_register{
+	margin: 0 290px;
+}
+.login_register span{
+	display: block;
+	width: 300px;
+	font-size: 15px;
+	margin: 10px 0;
+}
+.login_error{
+	color: red;
+	width: 320px;
+	margin: 10px auto;
+}
+/*
+	saveUser
+*/
+.save_user_page{
+	height: 100%;
+    padding: 100px 150px;
+}
+.save_user_page .header_logo{
+	margin: 0 340px;
+}
+.save_user_page .group_row{
+	width: 320px;
+	margin: 10px auto;
+}
+.save_user_row{
+	width: 320px;
+	margin: 20px auto;
+}
+.row{
+	margin: 10px 0;
+}
+.row input {
+    width: 300px;
+    height: 30px;
+    padding: 6px 7px;
+}
+.row label {
+    font-size: 15px;
+    font-weight: 700;
+}
+.save_user_btn{
+	background-color: #62a039;
+	padding: 10px 130px;
+	border-radius: 5px;
+	color: #fff;
+	width: 318px;
+	height: 50px;
+	font-size: 15px;
+	font-weight: 700;
+	text-decoration: none;
+	cursor: pointer;
+}
+.save_user_btn:hover{
+	background-color: #3f6624;
+	color: #fff;
+}
+.error_msg_row{
+	margin-bottom: 20px;
+}
+.error_msg{
+	color: red;
+	font-size: 10px;
+}
+
+/*
+	left_menu
+*/
+.left_menu{
+	width: 15%;
+	border: 1px solid #e4e8eb;
+	margin-right: 20px;
+}
+.left_navItem{
+	display: block;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 30px;
+	padding: 0 10px;
+}
+.left_navItem a{
+	display: block;
+	background-color: #62a039;
+	color: #fff;
+	border-radius: 5px;
+	margin: 10px 0;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+.left_navItem a:hover{
+	background-color: #3f6624;
+	color: #fff;
+}
+
+/*
+	content
+*/
+.content{
+	width: 85%;
+}
+
+/*
+	grid
+*/
+.grid_area{
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+.grid{
+	border-collapse: collapse;
+	width: 100%;
+}
+.grid td, .grid th {
+  border: 2px solid #ddd;
+  padding: 8px;
+}
+.grid tr{
+	line-height: 14px;
+}
+.grid tr:nth-child(even){
+	background-color: #f2f2f2;
+}
+
+.grid tr:hover {
+	background-color: #E4E4E4;
+}
+
+.grid th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #62a039;
+  color: white;
+  font-size: 15px;
+}
+
+nav{
+	margin: 20px;
+	text-align: center;
+}
+.pagination li{
+	display: inline-block;
+}
+.pagination li a{
+	background-color: #62a039;
+	border-radius: 5px 8px;
+	padding: 5px;
+	color: #fff;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/*
+	save_page
+*/
+.save_page{
+	height: 100%;
+	border: 1px solid #ccc;
+}
+.save_page_header{
+	width: 600px;
+	margin: 10px auto;
+	text-align: right;
+}
+.save_page_header a{
+}
+.save_page_row{
+	width: 600px;
+	margin: 10px auto;
+	padding: 10px;
+}
+.save_page_row input{
+	width: 582px;
+	height: 20px;
+	padding: 6px 7px;
+}
+.save_page_row textarea{
+	width: 582px;
+	height: 300px;
+	padding: 6px 7px;
+}
+
+/*
+	modal
+*/
+/* The Modal (background) */
+.defaultModal {
+	display: none;
+	width: 300px;
+	padding: 20px 60px;
+	background-color: #fefefe;
+	border: 1px solid #888;
+	border-radius: 3px;
+}
+/* Modal Content/Box */
+.defaultModal_content {
+}
+.modal_close_btn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
