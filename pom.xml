@@ -64,6 +64,7 @@
         </dependency>
         
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <!-- https://projectlombok.org/downloads/lombok.jar 설치 필요 -->
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
