@@ -1,4 +1,5 @@
-.mvn
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
 .settings
 .classpath
 .factorypath
