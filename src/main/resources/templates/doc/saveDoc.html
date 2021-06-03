@@ -6,18 +6,17 @@
     <title>Board</title>
 </head>
 <body>
-	<div class="defaultModal" layout:fragment="content">
-	    <script src="/js/doc/saveDoc.js" defer></script>
-		<div class="defaultModal_content">
-			<a class="modal_close_btn" href="javascript:saveUser();">닫기</a>
-			<div class="save_page_header">
-				<a class="" href="javascript:saveUser();">저장</a>
-			</div>
+	<div class="save_page" layout:fragment="content">
+	    <script src="/static/js/doc/saveDoc.js" defer></script>
+		<div class="save_page_content">
 			<div class="save_page_row">
 				<input type="text" name="title" placeholder="제목을 입력하세요." maxlength="200"/>
 			</div>
 			<div class="save_page_row">
 				<textarea name="title" placeholder="내용을 입력하세요." maxlength="2000"></textarea>
+			</div>
+			<div class="save_page_control">
+				<a class="" href="javascript:saveUser();">저장</a>
 			</div>
 		</div>
 	</div>

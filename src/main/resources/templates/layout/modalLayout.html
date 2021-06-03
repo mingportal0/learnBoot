@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
 	<title layout:title-pattern="$LAYOUT_TITLE : $CONTENT_TITLE">Demo</title>
-	<!-- common Script -->
+	<!-- common CSS, Script -->
 	<th:block th:replace="fragments/config"></th:block>
 </head>
 <body>
-	<div class="wrap">
+	<div class="modal_wrap">
 		<!-- page content body -->
 		<th:block layout:fragment="content"></th:block>
 	</div>

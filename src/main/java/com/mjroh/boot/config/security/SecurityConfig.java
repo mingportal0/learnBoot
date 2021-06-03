@@ -15,6 +15,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+		//X-Frame-Options able
+		.headers().frameOptions().disable()
+		.and()
+		.headers().frameOptions().sameOrigin()
+		.and()
 		//csrf 토큰 검사 비활성화
 		.csrf().disable()
 		//acess 제한 허용
