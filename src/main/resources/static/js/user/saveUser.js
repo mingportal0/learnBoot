@@ -1,9 +1,8 @@
 /**
  * User
  */
-let form = null;
 document.addEventListener("DOMContentLoaded", function(){
-	form = document.getElementById('saveUserForm');
+	let form = document.getElementById('saveUserForm');
 	
 	//validation
 	let inputs = document.querySelectorAll('form input');
@@ -59,7 +58,8 @@ document.addEventListener("DOMContentLoaded", function(){
 		});
 	}
 });
-let saveUser = () => {
+let saveUser = (formId) => {
+	let form = document.getElementById(formId);
 	let reqInput = ["email", "", ""];
 	if(!checkValidation()){
 		return;

@@ -22,11 +22,11 @@
 			<!-- Login -->
 			<div class="user_bar">
 				<div class="login_user_info">
-					<th:block th:if="${loginUserName != null}">
-							<span class="login_user_name" th:text="|${loginUserName}님|"></span>
+					<th:block th:if="${session.loginUser != null}">
+							<span class="login_user_name" th:text="|${session.loginUser.username}님|"></span>
 						    <a class="logout" href="javascript:logout(); ">Sign out</a>
 					</th:block>
-					<th:block th:unless="${loginUserName != null}">
+					<th:block th:unless="${session.loginUser != null}">
 						<a class="login" href="/login">Sign in</a>
 					</th:block> 
 				</div>

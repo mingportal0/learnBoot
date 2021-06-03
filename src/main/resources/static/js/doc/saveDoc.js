@@ -1,3 +1,12 @@
+(function(w, d) {
 /**
- * test
+ * saveUser
  */
+let saveDoc = () => {
+	let list = getData("saveDoc");
+	console.log(list);
+}
+
+
+
+})(window, document);
