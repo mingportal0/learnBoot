@@ -22,18 +22,19 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper=false)
 @Data
 public class MUser extends Persistance{
-	@Column(nullable=false, length=40)
+	@Column(nullable=false, length=500)
 	private String email;
 	
-	@Column(nullable=false, length=40)
+	@Column(nullable=false, length=500)
 	private String pw;
 	
-	@Column(nullable=false, length=60)
+	@Column(nullable=false, length=200)
 	private String name;
 	
 	@Column(nullable=false, length=13)
 	private String phone;
 	
 	@Column(length=40)
+	@Builder.Default
 	private String role = "user";
 }
