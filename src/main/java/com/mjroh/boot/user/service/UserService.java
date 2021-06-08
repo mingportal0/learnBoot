@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.mjroh.boot.user.model.bean.MUserData;
 import com.mjroh.boot.user.model.entity.MUser;
 import com.mjroh.boot.user.model.entity.UserRepository;
 
@@ -23,7 +24,6 @@ public class UserService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username){
 		MUser user = userRepository.findByEmail(username)
 				.orElseThrow(() -> new UsernameNotFoundException("아이디가 일치하지 않습니다."));
-		
-		return new User(user.getEmail(), user.getPw(), Arrays.asList(new SimpleGrantedAuthority(user.getRole())));
+		return new MUserData(user);
 	}
 }

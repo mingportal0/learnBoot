@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.usernameParameter("email")
 			.passwordParameter("pw")
 			.failureHandler(new CustomLoginFailureHandler())
-			.successHandler(new CustomLoginSeccessHandler())
+			.successHandler(new CustomLoginSuccessHandler())
 		.and()
 		.logout()
 			.logoutUrl("/logoutAction")

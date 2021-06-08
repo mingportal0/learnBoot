@@ -1,5 +1,8 @@
 package com.mjroh.boot.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mjroh.boot.user.model.bean.MUserData;
 import com.mjroh.boot.user.model.entity.MUser;
 import com.mjroh.boot.user.model.entity.UserRepository;
 
@@ -46,6 +50,17 @@ public class UserController {
 		
 		//redirect login page
 		model.setViewName("redirect:/login");
+		return model;
+	}
+
+	@RequestMapping(value = "/viewUser")
+	public ModelAndView viewUser(HttpServletRequest request) {
+		ModelAndView model = new ModelAndView();
+		HttpSession session = request.getSession();
+		MUserData loginUser = (MUserData) session.getAttribute("loginUser");
+		
+		model.addObject("user", loginUser);
+		model.setViewName("user/viewUser");
 		return model;
 	}
 }

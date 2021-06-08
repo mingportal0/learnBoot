@@ -44,7 +44,10 @@ let _createModalFade = (content) => {
 
 let _createModalDialog = (modal, modalTitle, link, width, height) => {
 	let div = _createClassDiv(["modal-dialog", "fade", "show"]);
-	div.style = "width: " + width + "px; height: " + height + "px;";
+	div.style = "width: " + width + "px;"
+		+" height: " + height + "px;"
+		+" margin-left: -" + width/2 + "px;"
+		+" margin-top: -" + height/2 + "px;";
 	div.setAttribute("role", "dialog");
 	div.setAttribute("id", "modal");
 	div.setAttribute("aria-labelledby", "myModalLabel");
