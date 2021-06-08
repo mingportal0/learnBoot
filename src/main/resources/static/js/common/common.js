@@ -52,9 +52,8 @@ w.getData = (elemId) => {
 		item.value = input.value;
 		itemList.push(item);
 	}
-	for(let si=0; si<selList.length; si++){
+	for(let sel of selList){
 		let item = new Object();
-		let sel = selList[si];
 		let selOpt = sel.options[sel.selectedIndex];
 		item.name = sel.name;
 		item.value = selOpt.value;
@@ -66,27 +65,114 @@ w.getData = (elemId) => {
 }
 
 /*
-	Element Name, Value 가져오기
+* validate : form 내 input validation
+* view 형식
+<div class="group_row">
+	<div class="row">
+		<label for="email">이메일</label>
+	</div>
+	<div class="row">
+		<input type="text" name="email" th:field="*{email}" placeholder="test@naver.com" maxlength="20"/>
+	</div>
+</div>
+* parameter 소개
+* name : input name
+* required : true 시 필수값으로 인식
+* check : function으로 정의 리턴이 false 시 에러 메세지 출력
+* checkMsg : 에러 메세지
+* return : 에러가 없으면 true
+ */
+w.validate = (form, defInput) => {
+	let inputs = form.querySelectorAll('input');
+	for(let input of inputs){
+		input.addEventListener("change", function(){
+			let groupRow = input.parentElement.parentElement;
+			let di = getDefInput(defInput, input);
+			
+			if(di.required && !input.value){
+				let chk1 = checkError(groupRow, input.value, "필수값입니다.");
+				if(!chk1) return;
+			}
+			if(di.equalTo){
+				let pw = form.querySelector(di.equalTo);
+				checkError(groupRow, input.value == pw.value, di.checkMsg);
+				return;
+			}
+			if(di.check){
+				checkError(groupRow, di.check(input), di.checkMsg);
+				return;
+			}
+			deleteErrorSpan(groupRow);
+		});
+	}
+}
+/*
+* checkValidate : form submit 전 form validation
 */
-getEleDataList = (td) => {
-	let itemList = [];
-	let inputList = td.querySelectorAll("input[type='text'], input[type='hidden'], textarea");
-	let selList = td.querySelectorAll("select");
-	for(let ii=0; ii<inputList.length; ii++){
-		let item = new Object();
-		let input = inputList[ii];
-		item.name = input.name;
-		item.value = input.value;
-		itemList.push(item);
+w.checkValidate = (form, defInput) => {
+	let inputs = form.querySelectorAll('input');
+	for(let input of inputs){
+		let groupRow = input.parentElement.parentElement;
+		let di = getDefInput(defInput, input);
+		
+		if(di.required){
+			let chk1 = checkError(groupRow, input.value, "필수값입니다.");
+			if(!chk1) return false;
+		}
+		if(di.equalTo){
+			let pw = form.querySelector(di.equalTo);
+			let chk1 = checkError(groupRow, input.value == pw.value, di.checkMsg);
+			if(!chk1) return false;
+		}
+		if(di.check){
+			let chk1 = checkError(groupRow, di.check(input), di.checkMsg);
+			if(!chk1) return false;
+		}
+		deleteErrorSpan(groupRow);
 	}
-	for(let si=0; si<selList.length; si++){
-		let item = new Object();
-		let sel = selList[si];
-		let selOpt = sel.options[sel.selectedIndex];
-		item.name = sel.name;
-		item.value = selOpt.value;
-		itemList.push(item);
+	return true;
+}
+
+//getDefInput
+let getDefInput = (defInput, input) => {
+	for(let di of defInput){
+		if(input.name === di.name){
+			return di;
+		}
 	}
-	return itemList;
+}
+
+//checkError
+let checkError = (groupRow, check, errorMsg) => {
+	if (!check) {
+		createErrorSpan(groupRow, errorMsg);
+		return false;
+	}else{
+		deleteErrorSpan(groupRow);
+		return true;
+	}
+}
+
+let createErrorSpan = (groupRow, errorMsg) =>{
+	let errorSpan = groupRow.querySelector(".error_msg");
+	if(errorSpan){
+		errorSpan.innerHTML = errorMsg;
+		return;
+	}else{
+		errorSpan = d.createElement("span");
+	}
+	let errorDiv = d.createElement("div");
+	errorDiv.classList.add("error_msg_row");
+	errorSpan.classList.add("error_msg");
+	errorSpan.innerHTML = errorMsg;
+	errorDiv.appendChild(errorSpan);
+	groupRow.appendChild(errorDiv);
+}
+let deleteErrorSpan = (groupRow) => {
+	let errorDiv = groupRow.querySelector(".error_msg_row");
+	if(!errorDiv){
+		return;
+	}
+	errorDiv.remove();
 }
 })(window, document);

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Save Doc</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- 컨텐츠 페이지 CSS 삽입 -->
-<link rel="stylesheet" href="/static/css/mstyle.css">
-<link rel="stylesheet" href="/static/css/fontawesome/css/all.min.css">
-<script src="/static/js/user/saveUser.js"></script>
+	<title>Save Doc</title>
+	<!-- common CSS, Script -->
+	<th:block th:replace="fragments/config"></th:block>
+	<script src="/static/js/user/saveUser.js" defer></script>
 </head>
 <body>
 <form id="saveUserForm" action="#" th:action="@{/user/saveUserAction}" th:object="${user}" method="post">
