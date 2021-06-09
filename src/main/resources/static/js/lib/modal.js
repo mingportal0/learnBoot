@@ -14,7 +14,14 @@ w.openModal = (id, modalTitle, link, width, height) => {
 */
 w.closeModal = () => {
 	let modal = d.querySelector(".modal");
-	modal.remove();
+	if(modal){
+		modal.remove();
+	}else{
+		modal = parent.document.querySelector(".modal");
+		if(modal){
+			modal.remove();
+		}
+	}
 }
 
 /*

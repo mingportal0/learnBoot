@@ -148,7 +148,33 @@ w.checkValidate = (form, defInput) => {
 }
 
 w.sendGetData = (url) => {
-	
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onload = function(){
+		if(xhr.status = 200){
+			var response = JSON.parse(xhr.responseText);
+			openNotice(response.msg, response.url);
+		}else{
+			openNotice(response.msg);
+		}
+	}
+	xhr.send();
+}
+
+w.sendPostData = (url, data) => {
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.onload = function(){
+		if(xhr.status = 200){
+			var response = JSON.parse(xhr.responseText);
+			openNotice(response.msg, response.url);
+		}else{
+			openNotice(response.msg);
+		}
+	}
+	data = JSON.stringify(data);
+	xhr.send(data);
 }
 
 //openNotice
@@ -160,22 +186,31 @@ w.openNotice = function(msg, url) {
 	
 	//url
 	if (url == "close") {
-		let modal = d.querySelector(".modal");
+		let modal = document.querySelector(".modal");
 		if(modal){
 			closeModal();
 		}else{
-			w.close();
+			modal = parent.document.querySelector(".modal");
+			if(modal){
+				closeModal();
+			}else{
+				w.close();
+			}
 		}
 		
 	} else if (url == "closeAndReload") {
-		let modal = d.querySelector(".modal");
+		let modal = document.querySelector(".modal");
 		if(modal){
-			console.log(modal);
-			closeModal();
+			location.reload();
 		}else{
-			w.close();
+			modal = parent.document.querySelector(".modal");
+			if(modal){
+				parent.location.reload();
+			}else{
+				w.close();
+				location.reload();
+			}
 		}
-		location.reload();
 
 	} else if (url == "reload") {
 		location.reload();

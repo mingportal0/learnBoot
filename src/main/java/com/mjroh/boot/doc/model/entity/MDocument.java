@@ -2,27 +2,23 @@ package com.mjroh.boot.doc.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedBy;
 
 import com.mjroh.boot.common.model.entity.Persistance;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name="mdocument")
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@SuperBuilder
 @ToString
-@EqualsAndHashCode(callSuper=false)
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class MDocument extends Persistance {
 	@Column(nullable=false, length=500)
 	private String title;

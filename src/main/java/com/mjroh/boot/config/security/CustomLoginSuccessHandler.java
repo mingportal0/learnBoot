@@ -11,7 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import com.mjroh.boot.user.model.bean.MUserData;
+import com.mjroh.boot.user.model.dto.MUserDto;
 
 public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -21,7 +21,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		HttpSession session = request.getSession();
 		
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		MUserData loginUser = (MUserData)principal;
+		MUserDto loginUser = (MUserDto)principal;
 		session.setAttribute("loginUser", loginUser);
 		
 		response.sendRedirect("/");

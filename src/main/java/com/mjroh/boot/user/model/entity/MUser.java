@@ -2,25 +2,22 @@ package com.mjroh.boot.user.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import com.mjroh.boot.common.model.entity.Persistance;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name="muser")
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@SuperBuilder
 @ToString
-@EqualsAndHashCode(callSuper=false)
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 public class MUser extends Persistance{
 	@Column(nullable=false, length=500)
 	private String email;

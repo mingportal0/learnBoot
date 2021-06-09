@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mjroh.boot.common.model.bean.WebMap;
+import com.mjroh.boot.common.model.dto.WebMap;
 import com.mjroh.boot.doc.model.entity.MDocument;
 import com.mjroh.boot.doc.service.DocRepository;
 
@@ -41,8 +41,6 @@ public class DocController {
 	@RequestMapping(value = "/saveDoc")
 	public ModelAndView saveDoc() {
 		ModelAndView model = new ModelAndView();
-		MDocument doc = new MDocument();
-		model.addObject("doc", doc);
 		model.setViewName("doc/saveDoc");
 		return model;
 	}
