@@ -4,26 +4,38 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mjroh.boot.common.model.bean.WebMap;
 import com.mjroh.boot.doc.model.entity.MDocument;
-import com.mjroh.boot.doc.service.DocDao;
+import com.mjroh.boot.doc.service.DocRepository;
 
 @Controller
 @RequestMapping(value = "/doc")
 public class DocController {
 	@Autowired
-	private DocDao docDao;
+	private DocRepository docDao;
 	
 	@RequestMapping(value = "/saveDocAction")
 	@ResponseBody
-	public List<MDocument> saveDocAction(MDocument doc){
-		System.out.println(doc);
-		docDao.save(doc);
-		
-		return docDao.findAll();
+	public WebMap saveDocAction(@RequestBody MDocument doc){
+		WebMap map = new WebMap();
+		try {
+			MDocument newDoc = docDao.save(doc);
+			
+			map.setData(newDoc);
+			map.setResult(true);
+			map.setMsg("등록이 완료되었습니다.");
+			map.setUrl("closeAndReload");
+			
+		}catch(Exception e) {
+			map.setResult(false);
+			map.setMsg("등록이 실패하였습니다.\n" + e.getLocalizedMessage());
+		}
+		return map;
 	}
 	
 	@RequestMapping(value = "/saveDoc")

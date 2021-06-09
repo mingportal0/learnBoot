@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div class="header" th:fragment="commonHeader">
+<div class="header" id="header" th:fragment="commonHeader">
 	<script src="/static/js/fragments/header.js"></script>
 	<div class="special_bg">
 		<div class="container_logo">
@@ -24,7 +24,7 @@
 			<div class="user_bar">
 				<div class="login_user_info">
 					<th:block th:if="${session.loginUser != null}">
-							<a href="javascript:openModal('index', '유저 상세보기', 'http://localhost:8080/user/viewUser', 700, 450)"><span class="login_user_name" th:text="|${session.loginUser.name}님|"></span></a>
+							<a href="javascript:openModal('header', '유저 상세보기', 'http://localhost:8080/user/viewUser', 700, 450)"><span class="login_user_name" th:text="|${session.loginUser.name}님|"></span></a>
 						    <a class="logout" href="javascript:logout(); ">Sign out</a>
 					</th:block>
 					<th:block th:unless="${session.loginUser != null}">
