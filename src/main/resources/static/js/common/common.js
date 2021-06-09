@@ -37,15 +37,31 @@ w.setMenu = (list) =>{
 		ul.appendChild(li);
 	}
 }
+//td 데이터 가져오기
+w.getData = (formId) => {
+	let form = d.getElementById(formId);
+	let list = new Object();
+	let eleItemList = getEleDataList(form);
+		
+	for(eleItem of eleItemList){
+		if(list[eleItem.name]){
+			let tmpVal = list[eleItem.value];
+			let tmpList = [];
+			tmpList.push(tmpVal);
+			tmpList.push(eleItem.value);
+			list[eleItem.name] = tmpList;
+		}else{
+			list[eleItem.name] = eleItem.value;
+		}
+	}
+	return list;
+}
 
-/*
-	get data
-*/
-w.getData = (elemId) => {
-	let box = d.getElementById(elemId);
+//Element Name, Value 가져오기
+getEleDataList = (form) => {
 	let itemList = [];
-	let inputList = box.querySelectorAll("input[type='text'], input[type='hidden'], textarea");
-	let selList = box.querySelectorAll("select");
+	let inputList = form.querySelectorAll("input[type='text'], input[type='hidden'], textarea");
+	let selList = form.querySelectorAll("select");
 	for(let input of inputList){
 		let item = new Object();
 		item.name = input.name;
@@ -59,9 +75,7 @@ w.getData = (elemId) => {
 		item.value = selOpt.value;
 		itemList.push(item);
 	}
-	
 	return itemList;
-	
 }
 
 /*
@@ -83,7 +97,7 @@ w.getData = (elemId) => {
 * return : 에러가 없으면 true
  */
 w.validate = (form, defInput) => {
-	let inputs = form.querySelectorAll('input');
+	let inputs = form.querySelectorAll('input, textarea');
 	for(let input of inputs){
 		input.addEventListener("change", function(){
 			let groupRow = input.parentElement.parentElement;
@@ -110,7 +124,7 @@ w.validate = (form, defInput) => {
 * checkValidate : form submit 전 form validation
 */
 w.checkValidate = (form, defInput) => {
-	let inputs = form.querySelectorAll('input');
+	let inputs = form.querySelectorAll('input, textarea');
 	for(let input of inputs){
 		let groupRow = input.parentElement.parentElement;
 		let di = getDefInput(defInput, input);
@@ -131,6 +145,79 @@ w.checkValidate = (form, defInput) => {
 		deleteErrorSpan(groupRow);
 	}
 	return true;
+}
+
+w.sendGetData = (url) => {
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onload = function(){
+		if(xhr.status = 200){
+			var response = JSON.parse(xhr.responseText);
+			openNotice(response.msg, response.url);
+		}else{
+			openNotice(response.msg);
+		}
+	}
+	xhr.send();
+}
+
+w.sendPostData = (url, data) => {
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.onload = function(){
+		if(xhr.status = 200){
+			var response = JSON.parse(xhr.responseText);
+			openNotice(response.msg, response.url);
+		}else{
+			openNotice(response.msg);
+		}
+	}
+	data = JSON.stringify(data);
+	xhr.send(data);
+}
+
+//openNotice
+w.openNotice = function(msg, url) {
+	if (!msg) {
+		return;
+	}
+	alert(msg);
+	
+	//url
+	if (url == "close") {
+		let modal = document.querySelector(".modal");
+		if(modal){
+			closeModal();
+		}else{
+			modal = parent.document.querySelector(".modal");
+			if(modal){
+				closeModal();
+			}else{
+				w.close();
+			}
+		}
+		
+	} else if (url == "closeAndReload") {
+		let modal = document.querySelector(".modal");
+		if(modal){
+			location.reload();
+		}else{
+			modal = parent.document.querySelector(".modal");
+			if(modal){
+				parent.location.reload();
+			}else{
+				w.close();
+				location.reload();
+			}
+		}
+
+	} else if (url == "reload") {
+		location.reload();
+		
+	} else if (url) {
+		location.href = url;
+	}
 }
 
 //getDefInput

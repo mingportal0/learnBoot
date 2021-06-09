@@ -78,6 +78,11 @@ button{
 	height: 550px;
 }
 
+.pv10{
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+}
+
 .text_left{
 	text-align: left !important;
 }
@@ -192,6 +197,10 @@ button{
 }
 .user_bar .login_user_info{
 	line-height: 30px;
+}
+.login_user_info a{
+	text-decoration: none;
+	color: #3f6624;
 }
 .user_bar .login_user_name{
 	margin: 0 20px;
@@ -383,8 +392,8 @@ button{
 .view_user_page .header_logo{
 	margin: 0 340px;
 }
-.save_user_page .group_row,
-.view_user_page .group_row{
+.save_user_page .user_group_row,
+.view_user_page .user_group_row{
 	width: 320px;
 	margin: 10px auto;
 }
@@ -548,9 +557,6 @@ nav{
 .save_page_control a:hover{
 	background-color: #3f6624;
 	color: #fff;
-}
-.save_page_row{
-	padding: 10px 0;
 }
 .save_page_row input{
 	width: 97%;

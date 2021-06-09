@@ -8,15 +8,19 @@
 <body>
 	<div class="save_page" layout:fragment="content">
 	    <script src="/static/js/doc/saveDoc.js" defer></script>
-		<form class="save_page_content" id="saveDoc" action="#" th:action="@{/user/saveUserAction}" th:object="${user}" method="post">
-			<div class="save_page_row">
-				<input type="text" name="title" placeholder="제목을 입력하세요." maxlength="200"/>
+		<form class="save_page_content" id="saveDoc" action="#" th:action="@{/doc/saveDocAction}" th:object="${doc}" method="post">
+			<div class="save_page_row group_row">
+				<div class="row">
+					<input type="text" name="title" placeholder="제목을 입력하세요." maxlength="200"/>
+				</div>
 			</div>
-			<div class="save_page_row">
-				<textarea name="content" placeholder="내용을 입력하세요." maxlength="2000"></textarea>
+			<div class="save_page_row group_row">
+				<div class="row">
+					<textarea name="content" placeholder="내용을 입력하세요." maxlength="2000"></textarea>
+				</div>
 			</div>
-			<div class="save_page_control">
-				<a class="" href="javascript:saveDoc();">저장</a>
+			<div class="save_page_row save_page_control">
+				<a class="" href="javascript:saveDoc('saveDoc');">저장</a>
 			</div>
 		</form>
 	</div>

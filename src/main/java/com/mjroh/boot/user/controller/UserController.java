@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mjroh.boot.user.model.bean.MUserData;
+import com.mjroh.boot.user.model.dto.MUserDto;
 import com.mjroh.boot.user.model.entity.MUser;
-import com.mjroh.boot.user.model.entity.UserRepository;
+import com.mjroh.boot.user.service.UserRepository;
 
 @Controller
 @RequestMapping("/user") 
@@ -57,7 +57,7 @@ public class UserController {
 	public ModelAndView viewUser(HttpServletRequest request) {
 		ModelAndView model = new ModelAndView();
 		HttpSession session = request.getSession();
-		MUserData loginUser = (MUserData) session.getAttribute("loginUser");
+		MUserDto loginUser = (MUserDto) session.getAttribute("loginUser");
 		
 		model.addObject("user", loginUser);
 		model.setViewName("user/viewUser");
