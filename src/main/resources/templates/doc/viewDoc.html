@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  layout:decorator="layout/modalLayout">
+<head>
+    <title>View Doc</title>
+</head>
+<body>
+<div class="save_page" layout:fragment="content">
+<script src="/static/js/doc/viewDoc.js" defer></script>
+<form class="save_page_content" id="viewDoc">
+	<input type="hidden" id="id" name="id" th:value="${doc.id}" />
+	<div class="view_user_page">
+		<div class="save_page_row pv10">
+			<div class="row">
+				<label for="email">제목</label>
+			</div>
+			<div class="row" th:text="${doc.title}">
+			</div>
+		</div>
+		<div class="save_page_row pv10">
+			<div class="row">
+				<label for="pw">작성일</label>
+			</div>
+			<div class="row" th:text="${doc.createStamp}">
+			</div>
+		</div>
+		<div class="save_page_row pv10">
+			<div class="row">
+				<label for="name">글쓴이</label>
+			</div>
+			<div class="row" th:text="${doc.creator}">
+			</div>
+		</div>
+		<div class="save_page_row pv10">
+			<div class="row">
+				<label for="phone">내용</label>
+			</div>
+			<div class="row" th:text="${doc.content}">
+			</div>
+		</div>
+		<div class="save_page_row pv10">
+			<div class="row">
+				<a th:href="@{'/doc/updateDoc'(id=${doc.id})}">수정</a>
+			</div>
+			<div class="row">
+				<a th:href="|javascript:deleteDoc('viewDoc')|">삭제</a>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+</body>
+</html>

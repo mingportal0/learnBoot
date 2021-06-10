@@ -101,14 +101,6 @@ public class DocService {
 			nextPageNum = 0;
 		}
 		
-		System.out.println("### page == " + page);
-		System.out.println("### docsTotalCount == " + docsTotalCount);
-		System.out.println("### totalLastPageNum == " + totalLastPageNum);
-		System.out.println("### blockStartPageNum == " + blockStartPageNum);
-		System.out.println("### blockLastPageNum == " + blockLastPageNum);
-		System.out.println("### prePageNum == " + prePageNum);
-		System.out.println("### nextPageNum == " + nextPageNum);
-		
 		//페이지 번호 할당
 		Integer[] pageList = new Integer[blockLastPageNum - blockStartPageNum + 1];
 		for(int val = blockStartPageNum, idx = 0; val <= blockLastPageNum; val++, idx++) {
@@ -127,7 +119,7 @@ public class DocService {
 		return dto;
 	}
 	
-	private MDocumentDto convertEntityToDto(MDocument e) {
+	public MDocumentDto convertEntityToDto(MDocument e) {
 	    return MDocumentDto.builder()
 	            .title(e.getTitle())
 	            .content(e.getContent())

@@ -21,9 +21,9 @@
 				    </tr>
 				</thead>
 				<tbody>
-				    <tr th:each="doc: ${list}">
-				        <td class="text_center" th:text="${doc.id}"></td>
-				        <td class="text_center"  th:text="${doc.title}"></td>
+				    <tr th:each="doc, index: ${list}">
+				        <td class="text_center"  th:text="${index.index+1}"></td>
+				        <td class="text_center" ><a th:href="|javascript:openModal('listDoc', '글 상세보기', '/doc/viewDoc?id=${doc.id}', 700, 700)|" th:text="${doc.title}"></a></td>
 				        <td class="text_center"  th:text="${doc.creator}"></td>
 				        <td class="text_center"  th:text="${doc.createStamp}"></td>
 				        <td class="text_center"  th:text="${doc.modifier}"></td>

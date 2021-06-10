@@ -103,18 +103,20 @@ w.validate = (form, defInput) => {
 			let groupRow = input.parentElement.parentElement;
 			let di = getDefInput(defInput, input);
 			
-			if(di.required && !input.value){
-				let chk1 = checkError(groupRow, input.value, "필수값입니다.");
-				if(!chk1) return;
-			}
-			if(di.equalTo){
-				let pw = form.querySelector(di.equalTo);
-				checkError(groupRow, input.value == pw.value, di.checkMsg);
-				return;
-			}
-			if(di.check){
-				checkError(groupRow, di.check(input), di.checkMsg);
-				return;
+			if(di){
+				if(di.required && !input.value){
+					let chk1 = checkError(groupRow, input.value, "필수값입니다.");
+					if(!chk1) return;
+				}
+				if(di.equalTo){
+					let pw = form.querySelector(di.equalTo);
+					checkError(groupRow, input.value == pw.value, di.checkMsg);
+					return;
+				}
+				if(di.check){
+					checkError(groupRow, di.check(input), di.checkMsg);
+					return;
+				}
 			}
 			deleteErrorSpan(groupRow);
 		});
@@ -129,19 +131,22 @@ w.checkValidate = (form, defInput) => {
 		let groupRow = input.parentElement.parentElement;
 		let di = getDefInput(defInput, input);
 		
-		if(di.required){
-			let chk1 = checkError(groupRow, input.value, "필수값입니다.");
-			if(!chk1) return false;
+		if(di){
+			if(di.required){
+				let chk1 = checkError(groupRow, input.value, "필수값입니다.");
+				if(!chk1) return false;
+			}
+			if(di.equalTo){
+				let pw = form.querySelector(di.equalTo);
+				let chk1 = checkError(groupRow, input.value == pw.value, di.checkMsg);
+				if(!chk1) return false;
+			}
+			if(di.check){
+				let chk1 = checkError(groupRow, di.check(input), di.checkMsg);
+				if(!chk1) return false;
+			}
 		}
-		if(di.equalTo){
-			let pw = form.querySelector(di.equalTo);
-			let chk1 = checkError(groupRow, input.value == pw.value, di.checkMsg);
-			if(!chk1) return false;
-		}
-		if(di.check){
-			let chk1 = checkError(groupRow, di.check(input), di.checkMsg);
-			if(!chk1) return false;
-		}
+		
 		deleteErrorSpan(groupRow);
 	}
 	return true;

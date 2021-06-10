@@ -17,7 +17,7 @@ let defInput = [
 ];
 
 /**
- * saveUser
+ * saveDoc
  */
 w.saveDoc = (formId) => {
 	let form = d.getElementById(formId);
@@ -26,10 +26,9 @@ w.saveDoc = (formId) => {
 	if(!checkValidate(form, defInput)){
 		return;
 	}
-	if(!confirm("등록 하시겠습니까?")){
+	if(!confirm(data.id? "수정 하시겠습니까?" : "저장 하시겠습니까?")){
 		return;
 	}
-	//console.log(data);
 	let url = "/doc/saveDocAction";
 	sendPostData(url, data);
 }
