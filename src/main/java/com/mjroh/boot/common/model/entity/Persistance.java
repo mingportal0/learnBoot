@@ -41,7 +41,7 @@ public class Persistance {
 	@Builder.Default
 	private int isDeleted = 0;
 	
-	@Column(length=40)
+	@Column(length=500)
 	@LastModifiedBy
 	private String modifier;
 	

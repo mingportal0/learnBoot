@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 
 import com.mjroh.boot.common.model.entity.Persistance;
 
@@ -26,7 +27,7 @@ public class MDocument extends Persistance {
 	@Column(nullable=false, length=5000)
 	private String content;
 	
-	@Column(length=40)
+	@Column(updatable = false, length=500)
 	@CreatedBy
 	private String creator;
 }
