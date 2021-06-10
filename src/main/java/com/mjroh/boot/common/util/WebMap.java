@@ -1,4 +1,4 @@
-package com.mjroh.boot.common.model.dto;
+package com.mjroh.boot.common.util;
 
 import java.util.List;
 

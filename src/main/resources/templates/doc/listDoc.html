@@ -34,28 +34,28 @@
 		</div>
 		<nav class="grid_nav">
 		    <ul class="pagination">
-		        <li class="disabled">
-		            <a href="#" aria-label="First">
+		        <li th:if="${pageDto.firstPageNum != pageDto.page}">
+		            <a href="#" aria-label="First" th:href="@{'/doc/listDoc'(page=${pageDto.firstPageNum})}">
 		                <span aria-hidden="true">First</span>
 		            </a>
 		        </li>
-		        <li class="disabled">
-		            <a href="#" aria-label="Previous">
+		        
+		        <li th:if="${pageDto.previousPageNum != 0}">
+		            <a href="#" aria-label="Previous" th:href="@{'/doc/listDoc'(page=${pageDto.previousPageNum})}">
 		                <span aria-hidden="true">&lt;</span>
 		            </a>
 		        </li>
-		        <li class="active"><a href="#">1</a></li>
-		        <li><a href="#">2</a></li>
-		        <li><a href="#">3</a></li>
-		        <li><a href="#">4</a></li>
-		        <li><a href="#">5</a></li>
-		        <li>
-		            <a href="#" aria-label="Next">
+		        
+		        <li class="active" th:each="pageNum : ${pageDto.pageList}"><a th:href="@{'/doc/listDoc'(page=${pageNum})}" th:text="${pageNum}"></a></li>
+		        
+		        <li th:if="${pageDto.nextPageNum != 0}">
+		            <a href="#" aria-label="Next" th:href="@{'/doc/listDoc'(page=${pageDto.nextPageNum})}">
 		                <span aria-hidden="true">&gt;</span>
 		            </a>
 		        </li>
-		        <li>
-		            <a href="#" aria-label="Last">
+		        
+		        <li th:if="${pageDto.LastPageNum != pageDto.page}">
+		            <a href="#" aria-label="Last" th:href="@{'/doc/listDoc'(page=${pageDto.LastPageNum})}">
 		                <span aria-hidden="true">Last</span>
 		            </a>
 		        </li>

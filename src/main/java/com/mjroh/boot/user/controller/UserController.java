@@ -23,11 +23,11 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	@RequestMapping("/searchUser") 
-	public ModelAndView searchUser() {
+	@RequestMapping("/listUser") 
+	public ModelAndView listUser() {
 		ModelAndView model = new ModelAndView();
 		model.addObject("userList", userDao.findAll());
-		model.setViewName("user/searchUser");
+		model.setViewName("user/listUser");
 		return model; 
 	}
 	
