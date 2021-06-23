@@ -17,11 +17,15 @@
 			</div>
 			<div class="save_page_row group_row">
 				<div class="row">
-					<textarea name="content" placeholder="내용을 입력하세요." maxlength="2000" th:field="*{content}"></textarea>
+					<!-- <textarea name="content" placeholder="내용을 입력하세요." maxlength="2000" th:field="*{content}"></textarea> -->
+					<div class="h300" id="content" th:field="*{content}"></div>
 				</div>
 			</div>
 			<div class="save_page_row save_page_control">
 				<a class="" href="javascript:saveDoc('saveDoc');" th:text="${doc.id==null? '저장' : '수정'}"></a>
+				<th:block th:if="${doc.id!=null}">
+				<a class="" href="javascript:history.back();">뒤로</a>
+				</th:block>
 			</div>
 		</form>
 	</div>
